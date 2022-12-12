@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Python-cod</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <ul class="nav nav-tabs bg-success shadow rounded sticky-sm-top ">
+    <li class="nav-item">
+      <a class="nav-link text-white" aria-current="page" href="../python/index.html">Главная</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" href="../data/index.html">Подключение и обработка</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-white" href="../text/index.html">Работа с данными</a>
+      </li> 
+    <li class="nav-item">
+      <a class="nav-link text-white" href="../table/index.html">Визуализация</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" href="../photo/index.html">Модель</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active link-dark fw-bolder" href="../test/index.html">Колаб test</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" href="../housing/index.html">Колаб housing</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" href="../regression/index.html">Колаб регрессия</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" href="../visual/index.html">Колаб визуализация</a>
+    </li>
+    <button type="button" class="btn btn-succes text-white px-3" type="submit" onClick="location.href='https://www.youtube.com/watch?v=kb8mcYwbFj8&ab_channel=GloAcademy'">YouTube</button> 
+  </ul>
+      
+<div class="container">
+<pre>
+<code>
+from google.colab import files
+uploaded = files.upload()
+
+__________________________________________________________________________________________
+
+import pandas as pd
+dataframe1 = pd.read_csv('test_ses (1).csv')
+
+__________________________________________________________________________________________
+
+dataframe1.describe()
+__________________________________________________________________________________________
+
+import pandas as pd
+
+dataframe = pd.read_csv('test_ses.csv')
+dataframe
+__________________________________________________________________________________________
+
+import pandas as pd
+
+dataframe = pd.read_csv('test_ses.csv')
+dataframe[dataframe['time2'].isnull()].head(10)
+__________________________________________________________________________________________
+
+dataframe['session_id'].unique()
+
+
+import pandas as pd
+
+dataframe = pd.read_csv('test_ses.csv')
+dataframe.dropna(axis='columns',how='all', inplace=True)
+dataframe
+__________________________________________________________________________________________
+
+import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+dataframe = pd.read_csv('test_ses.csv')
+
+tfidf = TfidfVectorizer()
+feature_matrix = tfidf.fit_transform(dataframe)
+
+feature_matrix
+__________________________________________________________________________________________
+
+feature_matrix.toarray()
+__________________________________________________________________________________________
+
+dataframe.describe()
+__________________________________________________________________________________________
+
+import pandas as pd
+dataframe = pd.read_csv('test_ses.csv')
+dataframe= dataframe.sort_values(by= "session_id" )[:10]
+
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots()
+dataframe.plot(kind = 'line', x= "time1", y= "site1", ax = ax)
+fig.savefig('table.png', transparent=False, dpi=80, bbox_inches="tight")
+__________________________________________________________________________________________
+
+import pandas as pd
+dataframe = pd.read_csv('test_ses.csv')
+dataframe= dataframe.sort_values(by= "session_id" )[:10]
+
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots()
+dataframe.plot(kind = 'barh', x= "time2", y= "site2", ax = ax)
+ax.set(title='График',
+xlabel = 'Время', ylabel='Сайт')
+ax.legend().set_visible(False)
+
+avg = dataframe['site2'].mean()
+competitors = dataframe[dataframe.site2 > avg]
+ax.axhline(y=len(competitors)-0.5, color='green', label='Average', linestyle='-.', linewidth=4) 
+
+fig.savefig('grafik.png', transparent=False, dpi=80, bbox_inches="tight")
+__________________________________________________________________________________________
+
+import pandas as pd
+dataframe = pd.read_csv('test_ses.csv')
+dataframe= dataframe.sort_values(by= "session_id" )[:10]
+
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots()
+dataframe.plot(kind = 'hist', x= "time3", y= "site3", ax = ax)
+ax.set(title='График',
+xlabel = 'Время', ylabel='Сайт')
+ax.legend().set_visible(False)
+
+fig.savefig('grafik.png', transparent=False, dpi=80, bbox_inches="tight")
+
+__________________________________________________________________________________________
+
+</code>
+</pre>
+</div>
+      
+</body>
+</html>
